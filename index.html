@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwagWare</title>
+    <style>
+        body {
+            background-color: rgb(30, 30, 30);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            align-items: center;
+        }
+        .docs-link {
+            color: rgb(181, 189, 255);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        .swag {
+            color: rgb(181, 189, 255);
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .image-container {
+            width: 466px;
+            height: 549px;
+            margin: 20px auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container img {
+            width: 466px;
+            height: 549px;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .visible {
+            opacity: 1 !important;
+        }
+        button {
+            background-color: rgb(181, 189, 255);
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: rgb(150, 160, 255);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1><span class="swag">Swag</span>Ware</h1>
+        <a href="FAQ.html" class="docs-link">Docs & FAQ</a>
+    </div>
+
+    <h2>An advanced ROBLOX tool featuring cutting-edge features like Aimbot, ESP, customizable settings, and chams.</h2>
+
+    <div class="container">
+        <h2>Take a look!</h2>
+        <div class="image-container" id="imageContainer">
+            <img src="img/ESP.png" class="visible">
+            <img src="img/AIMBOT.png">
+            <img src="img/SETTINGS.png">
+            <img src="img/EXPLORER.png">
+            <img src="img/EXTRA.png">
+        </div>
+        <button onclick="nextImage()">Next Image</button>
+    </div>
+
+    <script>
+        let images = document.querySelectorAll('.image-container img');
+        let index = 0;
+
+        function cycleImages() {
+            images[index].classList.remove('visible');
+            index = (index + 1) % images.length;
+            images[index].classList.add('visible');
+        }
+
+        function nextImage() {
+            cycleImages();
+        }
+
+        setInterval(cycleImages, 3000);
+    </script>
+</body>
+</html>
