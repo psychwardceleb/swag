@@ -1,4 +1,4 @@
-<!-- Full HTML with Feature List Section Added -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,6 +118,11 @@
       list-style: disc;
     }
 
+    .item a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
     code {
       background-color: #2f2f2f;
       padding: 2px 6px;
@@ -192,164 +197,87 @@
     <div class="nav-button" onclick="showSection('features')">
       <h3>Feature List</h3>
     </div>
+    <div class="nav-button" onclick="showSection('requirements')">
+      <h3>Requirements</h3>
+    </div>
   </div>
 
   <div class="main-content">
-    <!-- Docs Section -->
+   
     <div id="docs" class="section active">
       <h1>Initial Setup Guide</h1>
       <div class="item">
         <h3>1. Make Sure Your Windows Account Has Administrator Privileges</h3>
-        <p>To run the loader properly, your Windows account must be an administrator. This ensures it can execute without prompting for another username or password.</p>
+        <p>To run the loader properly, your Windows account must be an administrator.</p>
       </div>
       <div class="item">
         <h3>2. SwagWare Anti-Virus Exclusions</h3>
-        <p>To avoid issues with your anti-virus, you need to exclude the following folders:</p>
+        <p>Exclude the following:</p>
         <ul>
-          <li>The folder where your <code>loader.exe</code> is located.</li>
-          <li>The <code>%appdata%\swagware</code> folder.</li>
+          <li><code>loader.exe</code> folder</li>
+          <li><code>%appdata%\swagware</code></li>
         </ul>
       </div>
     </div>
 
-    <!-- FAQ Section -->
+   
     <div id="faq" class="section">
       <h1>FAQ</h1>
       <div class="item">
         <h3>What games are supported?</h3>
-        <p>Almost all of them, really. SwagWare supports any games that don’t have custom player models. We are working on adding support for the games that do.</p>
+        <p>SwagWare supports most games that don’t use custom player models.</p>
       </div>
       <div class="item">
         <h3>Will I get banned?</h3>
-        <p>You can use SwagWare on any game freely, but games with advanced anti-cheats may detect certain features or unusual aiming behavior.</p>
+        <p>SwagWare can be used on any game, but anti-cheats may detect certain features.</p>
       </div>
       <div class="item">
         <h3>What makes SwagWare unique?</h3>
         <ul>
-          <li>Stream-proof, bypasses Discord screen shares.</li>
-          <li>Well-coded silent aim.</li>
-          <li>Windows 11 support.</li>
+          <li>Stream-proof</li>
+          <li>Silent aim</li>
+          <li>Windows 11 support</li>
         </ul>
       </div>
       <div class="item">
         <h3>What do I need to run SwagWare?</h3>
-        <p>You don’t need a NASA supercomputer to run SwagWare—a solid PC will do just fine! Just make sure you're on Windows 10 or Windows 11 (up to version 22H2).</p>
+        <p>Any decent PC on Windows 10/11 (up to version 22H2) will work.</p>
       </div>
     </div>
 
-    <!-- Feature List Section -->
+  
     <div id="features" class="section">
       <h1>Feature List</h1>
       <div class="fancy-feature-list">
-        <div class="feature-box">
-          <h3>ESP Features</h3>
-          <ul>
-            <li>Box</li>
-            <li>Box Outlines</li>
-            <li>Name</li>
-            <li>Distance</li>
-            <li>Dot</li>
-            <li>Healthbar</li>
-            <li>Tracers</li>
-            <li>DisplayTarget</li>
-            <li>Chams</li>
-            <li>Crosshair</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Color Settings</h3>
-          <ul>
-            <li>BoxFill Color</li>
-            <li>Box Color</li>
-            <li>Cham Color</li>
-            <li>Dot Color</li>
-            <li>Name Color</li>
-            <li>Tracers Color</li>
-            <li>FOV Color</li>
-            <li>TargetLine Color</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Additional ESP Settings</h3>
-          <ul>
-            <li>Fill Box</li>
-            <li>Box Type</li>
-            <li>Fill Chams</li>
-            <li>Team ESP</li>
-            <li>Tracer Options</li>
-            <li>TargetLine Style</li>
-            <li>Crosshair Rotation</li>
-            <li>Crosshair Flicker</li>
-            <li>Rotation Speed</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Aimbot</h3>
-          <ul>
-            <li>Enable</li>
-            <li>Silent Aim</li>
-            <li>Notify</li>
-            <li>Sticky Aim</li>
-            <li>Prediction</li>
-            <li>Team Check</li>
-            <li>Show FOV</li>
-            <li>FOV Size</li>
-            <li>Shake</li>
-            <li>Triggerbot</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Aim Type & Part</h3>
-          <ul>
-            <li>Aim Type</li>
-            <li>Aim Part</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Prediction Settings</h3>
-          <ul>
-            <li>Horizontal Prediction</li>
-            <li>Vertical Prediction</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Shake & Sensitivity</h3>
-          <ul>
-            <li>Shake Value</li>
-            <li>Sensitivity</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Silent Aim Settings</h3>
-          <ul>
-            <li>SilentAim Prediction</li>
-            <li>Horizontal_s Prediction</li>
-            <li>Vertical_s Prediction</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Toggle Settings</h3>
-          <ul>
-            <li>Aimbot Toggle</li>
-            <li>Triggerbot Toggle</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Explorer</h3>
-          <ul>
-            <li>Workspace Explorer</li>
-          </ul>
-        </div>
-        <div class="feature-box">
-          <h3>Extra Features</h3>
-          <ul>
-            <li>Rescan</li>
-            <li>Display Proof</li>
-            <li>Cframe Speed</li>
-            <li>Speed Amount</li>
-            <li>Snowy Background</li>
-          </ul>
-        </div>
+        <div class="feature-box"><h3>ESP Features</h3><ul><li>Box</li><li>Box Outlines</li><li>Name</li><li>Distance</li><li>Dot</li><li>Healthbar</li><li>Tracers</li><li>DisplayTarget</li><li>Chams</li><li>Crosshair</li></ul></div>
+        <div class="feature-box"><h3>Color Settings</h3><ul><li>BoxFill Color</li><li>Box Color</li><li>Cham Color</li><li>Dot Color</li><li>Name Color</li><li>Tracers Color</li><li>FOV Color</li><li>TargetLine Color</li></ul></div>
+        <div class="feature-box"><h3>Additional ESP Settings</h3><ul><li>Fill Box</li><li>Box Type</li><li>Fill Chams</li><li>Team ESP</li><li>Tracer Options</li><li>TargetLine Style</li><li>Crosshair Rotation</li><li>Crosshair Flicker</li><li>Rotation Speed</li></ul></div>
+        <div class="feature-box"><h3>Aimbot</h3><ul><li>Enable</li><li>Silent Aim</li><li>Notify</li><li>Sticky Aim</li><li>Prediction</li><li>Team Check</li><li>Show FOV</li><li>FOV Size</li><li>Shake</li><li>Triggerbot</li></ul></div>
+        <div class="feature-box"><h3>Aim Type & Part</h3><ul><li>Aim Type</li><li>Aim Part</li></ul></div>
+        <div class="feature-box"><h3>Prediction Settings</h3><ul><li>Horizontal Prediction</li><li>Vertical Prediction</li></ul></div>
+        <div class="feature-box"><h3>Shake & Sensitivity</h3><ul><li>Shake Value</li><li>Sensitivity</li></ul></div>
+        <div class="feature-box"><h3>Silent Aim Settings</h3><ul><li>SilentAim Prediction</li><li>Horizontal_s Prediction</li><li>Vertical_s Prediction</li></ul></div>
+        <div class="feature-box"><h3>Toggle Settings</h3><ul><li>Aimbot Toggle</li><li>Triggerbot Toggle</li></ul></div>
+        <div class="feature-box"><h3>Explorer</h3><ul><li>Workspace Explorer</li></ul></div>
+        <div class="feature-box"><h3>Extra Features</h3><ul><li>Rescan</li><li>Display Proof</li><li>Cframe Speed</li><li>Speed Amount</li><li>Snowy Background</li></ul></div>
+      </div>
+    </div>
+
+    
+    <div id="requirements" class="section">
+      <h1>Requirements</h1>
+      <div class="item">
+        <h3>DirectX Runtime</h3>
+        <p>SwagWare requires DirectX. Download it here:</p>
+        <p><a href="https://www.microsoft.com/en-us/download/details.aspx?id=35" target="_blank">Download DirectX End-User Runtime</a></p>
+      </div>
+      <div class="item">
+        <h3>Microsoft Visual C++ Redistributables</h3>
+        <p>You need both versions installed:</p>
+        <ul>
+          <li><a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank">Download x64 Redistributable</a></li>
+          <li><a href="https://aka.ms/vs/17/release/vc_redist.x86.exe" target="_blank">Download x86 Redistributable</a></li>
+        </ul>
       </div>
     </div>
   </div>
