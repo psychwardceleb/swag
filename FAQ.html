@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +12,10 @@
       --text-main: #e0e0e0;
       --text-muted: #b0b0b0;
       --hover-bg: #2a2a2a;
+      --lua-yellow: #ffe066;
+      --lua-blue: #4fc3f7;
+      --lua-green: #baffc9;
+      --lua-glow: 0 0 10px #b5bdff, 0 0 20px #4fc3f7;
     }
 
     * {
@@ -123,13 +126,27 @@
       text-decoration: underline;
     }
 
-    code {
-      background-color: #2f2f2f;
+    code, pre {
+      background-color: #232b35;
       padding: 2px 6px;
       border-radius: 4px;
-      font-family: monospace;
-      font-size: 0.9rem;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      font-size: 0.97rem;
       color: #fff;
+      box-shadow: 0 0 8px #4fc3f722;
+      transition: box-shadow 0.2s;
+    }
+
+    pre {
+      display: block;
+      padding: 18px 18px 18px 28px;
+      margin: 14px 0;
+      background: #181f26;
+      color: #fff;
+      overflow-x: auto;
+      border-left: 4px solid var(--accent);
+      box-shadow: var(--lua-glow);
+      font-size: 1.04rem;
     }
 
     .fancy-feature-list {
@@ -162,27 +179,55 @@
       color: var(--accent);
     }
 
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-        justify-content: space-around;
-        padding: 15px;
-      }
-
-      .main-content {
-        padding: 20px;
-      }
-
-      .section h1 {
-        font-size: 1.8rem;
-      }
+    #lua-doc .lua-header {
+      font-size: 2.1rem;
+      color: #ffe066;
+      margin-bottom: 20px;
+      text-shadow: 0 0 12px #b5bdff, 0 0 16px #4fc3f7;
+      letter-spacing: 1px;
+      animation: luaGlow 2.5s infinite alternate;
     }
+
+    @keyframes luaGlow {
+      from { text-shadow: 0 0 12px #b5bdff, 0 0 16px #4fc3f7; }
+      to { text-shadow: 0 0 24px #ffe066, 0 0 32px #4fc3f7; }
+    }
+
+    #lua-doc .doc-section {
+      margin-bottom: 35px;
+    }
+
+    #lua-doc h2 {
+      color: var(--lua-blue);
+      font-size: 1.3rem;
+      margin: 28px 0 10px 0;
+      border-bottom: 1px solid #4fc3f7;
+      padding-bottom: 4px;
+      text-shadow: 0 0 8px #4fc3f7;
+    }
+
+    #lua-doc h3 {
+      color: var(--lua-green);
+      font-size: 1.1rem;
+      margin: 18px 0 6px 0;
+      text-shadow: 0 0 6px #baffc9;
+    }
+
+    #lua-doc ul {
+      margin: 8px 0 18px 25px;
+    }
+
+    #lua-doc li {
+      margin-bottom: 5px;
+    }
+
+    /* Lua Syntax Highlighting */
+    .lua-highlight .lua-comment  { color: #888888; font-style: italic; }
+    .lua-highlight .lua-keyword  { color: #ff5c57; font-weight: bold; }
+    .lua-highlight .lua-string   { color: #ffe066; }
+    .lua-highlight .lua-func     { color: #4fc3f7; }
+    .lua-highlight .lua-number   { color: #ffb86c; }
+    .lua-highlight .lua-builtin  { color: #baffc9; }
   </style>
 </head>
 <body>
@@ -199,6 +244,9 @@
     </div>
     <div class="nav-button" onclick="showSection('requirements')">
       <h3>Requirements</h3>
+    </div>
+    <div class="nav-button" onclick="showSection('lua-doc')">
+      <h3>Lua DOC</h3>
     </div>
   </div>
 
@@ -220,7 +268,6 @@
       </div>
     </div>
 
-   
     <div id="faq" class="section">
       <h1>FAQ</h1>
       <div class="item">
@@ -245,7 +292,6 @@
       </div>
     </div>
 
-  
     <div id="features" class="section">
       <h1>Feature List</h1>
       <div class="fancy-feature-list">
@@ -263,7 +309,6 @@
       </div>
     </div>
 
-    
     <div id="requirements" class="section">
       <h1>Requirements</h1>
       <div class="item">
@@ -280,6 +325,107 @@
         </ul>
       </div>
     </div>
+
+    <!-- LUA DOC SECTION -->
+    <div id="lua-doc" class="section">
+      <div class="lua-header">
+        Custom Lua Environment Documentation (swag API)
+      </div>
+      <div style="margin-bottom: 25px; color: #baffc9;">
+        SWAGWARE runs Lua 5.4.8 with a custom library called <code>swag</code>.<br>
+        This scripting environment is unique to SWAGWARE and is <b>not related to Roblox’s Lua environment</b> in any way.
+      </div>
+
+      <div class="doc-section">
+        <h2>Global Namespace: <code>swag</code></h2>
+        <p>
+          All SWAGWARE scripting functions are accessed through the <code>swag</code> global. Use these to interact with in-game objects and player data.
+        </p>
+        <ul>
+          <li>
+            <b><code>swag.get_datamodel()</code></b><br>
+            This function returns the root object of the game. If you’ve used Lua before, think of it like the <code>game</code> object in other engines. It’s essential for accessing things like the workspace or player list.
+          </li>
+          <li>
+            <b><code>swag.find_first_child(parent, name)</code></b><br>
+            Use this to search for a child object by name under any instance. Returns the first match or <code>nil</code> if not found.
+          </li>
+          <li>
+            <b><code>swag.get_children(instance)</code></b><br>
+            Returns a table (array) of all children under the given instance. Useful for iterating through groups of objects.
+          </li>
+          <li>
+            <b><code>swag.get_local_player()</code></b><br>
+            Returns the memory address of the local player. (Note: This is for internal/C++ use, not for scripting.)
+          </li>
+          <li>
+            <b><code>swag.get_health()</code></b><br>
+            Returns the local player’s current health value.
+          </li>
+          <li>
+            <b><code>swag.get_max_health()</code></b><br>
+            Returns the local player’s maximum health value.
+          </li>
+          <li>
+            <b><code>swag.get_walkspeed()</code></b><br>
+            Returns the local player’s current walkspeed.
+          </li>
+          <li>
+            <b><code>swag.set_walkspeed(speed)</code></b><br>
+            Sets the local player’s walkspeed to the value you provide.
+          </li>
+          <li>
+            <b><code>swag.get_part_pos(partName)</code></b><br>
+            Returns the position (<code>x, y, z</code>) of a part (by name) on the local player.
+          </li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Instance Object Methods</h2>
+        <ul>
+          <li>
+            <b><code>instance:getName()</code></b><br>
+            Returns the name of the instance or child.
+          </li>
+          <li>
+            <b><code>instance:getClassName()</code></b><br>
+            Returns the class type of the instance (like <code>"Part"</code> or <code>"Model"</code>).
+          </li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Example Script with Comments</h2>
+        <pre id="lua-example" class="lua-highlight"><code>
+<span class="lua-comment">-- Get the root object of the game</span>
+<span class="lua-keyword">local</span> game = <span class="lua-func">swag.get_datamodel</span>()
+
+<span class="lua-comment">-- Try to get the "Workspace" child from the root</span>
+<span class="lua-keyword">local</span> workspace = <span class="lua-func">swag.find_first_child</span>(game, <span class="lua-string">"Workspace"</span>)
+
+<span class="lua-comment">-- Safety check in case it's not found</span>
+<span class="lua-keyword">if</span> <span class="lua-keyword">not</span> workspace <span class="lua-keyword">then</span>
+    <span class="lua-func">print</span>(<span class="lua-string">"Workspace not found!"</span>)
+    <span class="lua-keyword">return</span>
+<span class="lua-keyword">end</span>
+
+<span class="lua-comment">-- Get all children of Workspace</span>
+<span class="lua-keyword">local</span> children = <span class="lua-func">swag.get_children</span>(workspace)
+
+<span class="lua-func">print</span>(<span class="lua-string">"Children of Workspace:"</span>)
+
+<span class="lua-comment">-- Loop over each child and print its name and class</span>
+<span class="lua-keyword">for</span> _, child <span class="lua-keyword">in</span> <span class="lua-func">ipairs</span>(children) <span class="lua-keyword">do</span>
+    <span class="lua-keyword">local</span> name = <span class="lua-func">child:getName</span>()
+    <span class="lua-keyword">local</span> class = <span class="lua-func">child:getClassName</span>()
+    <span class="lua-func">print</span>(<span class="lua-string">"- "</span> .. name .. <span class="lua-string">" ["</span> .. class .. <span class="lua-string">"]"</span>)
+<span class="lua-keyword">end</span>
+        </code></pre>
+      </div>
+    </div>
+    <!-- END LUA DOC SECTION -->
+
   </div>
 
   <script>
@@ -289,6 +435,7 @@
       });
       document.getElementById(sectionId).classList.add('active');
     }
+ 
   </script>
 </body>
 </html>
